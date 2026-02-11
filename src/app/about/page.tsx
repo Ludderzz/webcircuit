@@ -1,4 +1,4 @@
-import { Code2, Cpu, Globe2, Layers, Rocket, Users } from 'lucide-react'
+import { Code2, Cpu, Globe2, Layers, MapPin, Rocket, Users } from 'lucide-react'
 
 export default function AboutPage() {
   const stack = [
@@ -8,6 +8,13 @@ export default function AboutPage() {
     { name: 'Supabase', desc: 'Open source Firebase alternative' },
     { name: 'PostgreSQL', desc: 'The world’s most advanced database' },
     { name: 'Framer Motion', desc: 'Cinematic layout animations' },
+  ]
+
+  const areas = [
+    { region: 'Primary Hub', towns: 'Clevedon, North Somerset' },
+    { region: 'North Somerset Core', towns: 'Portishead, Nailsea, Yatton, Backwell, Long Ashton' },
+    { region: 'Greater Somerset', towns: 'Weston-super-Mare, Bridgwater, Taunton, Glastonbury' },
+    { region: 'South West & Beyond', towns: 'Bristol, Bath, Cheltenham, Gloucester, Exeter' },
   ]
 
   return (
@@ -43,7 +50,7 @@ export default function AboutPage() {
         </div>
 
         {/* 3. THE STACK (Grid) */}
-        <section className="space-y-12">
+        <section className="space-y-12 mb-40">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <h2 className="text-4xl font-bold tracking-tight">The Arsenal</h2>
             <p className="text-slate-500 max-w-sm">We use the most advanced tools to ensure your product stays relevant for years, not months.</p>
@@ -62,8 +69,31 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* SERVICE AREA SECTION - SEO ENGINE */}
+        <section className="mb-40 p-8 md:p-16 rounded-[3rem] bg-gradient-to-b from-blue-600/5 to-transparent border border-slate-800/50">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black tracking-[0.2em] uppercase mb-6">
+                <MapPin className="w-3 h-3" /> Service Network
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-6">SOUTH WEST <br /><span className="text-slate-500">COVERAGE.</span></h2>
+              <p className="text-slate-400 leading-relaxed mb-8 max-w-md">
+                While our code is global, our roots are local. We provide on-site consultation and elite web development across the South West, ensuring Somerset businesses have access to world-class engineering.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-4">
+              {areas.map((area, i) => (
+                <div key={i} className="p-6 rounded-2xl border border-slate-800 bg-black/40 hover:border-blue-500/30 transition-all">
+                  <h4 className="text-blue-400 text-[10px] font-black uppercase tracking-widest mb-1">{area.region}</h4>
+                  <p className="text-slate-200 font-bold leading-tight">{area.towns}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* 4. PROCESS SECTION */}
-        <section className="mt-40 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="space-y-8">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">The Blueprint</h2>
             
@@ -97,6 +127,5 @@ export default function AboutPage() {
         </section>
       </div>
     </div>
-    
   )
 }
