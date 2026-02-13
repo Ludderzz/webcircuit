@@ -1,12 +1,11 @@
 import Link from 'next/link'
 import { ArrowRight, Zap, Shield, BarChart3, ChevronRight, Code2, Rocket, MessageSquare, Layers, X, Check, Timer, TrendingUp, DollarSign, MapPin } from 'lucide-react'
-
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#020203] text-slate-50 overflow-x-hidden">
       
       {/* 1. HERO SECTION */}
-      <section className="relative pt-40 pb-20 px-6">
+      <section className="relative pt-40 pb-20 px-6" aria-label="Web Design Clevedon Hero">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-blue-600/20 blur-[120px] rounded-full opacity-50 -z-10" />
         
         <div className="max-w-7xl mx-auto text-center">
@@ -27,7 +26,7 @@ export default function LandingPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/showcase" className="group h-14 px-8 flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-bold transition-all shadow-lg shadow-blue-600/20">
+            <Link href="/showcase" title="View our Next.js web design portfolio" className="group h-14 px-8 flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-bold transition-all shadow-lg shadow-blue-600/20">
               View Showcase
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -36,7 +35,7 @@ export default function LandingPage() {
       </section>
 
       {/* 2. THE "WHY US" COMPARISON */}
-      <section className="py-24 px-6 max-w-7xl mx-auto">
+      <section className="py-24 px-6 max-w-7xl mx-auto" id="why-web-circuit">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-6 uppercase">Why founders <br /><span className="text-blue-500">choose WebCircuit</span></h2>
@@ -70,7 +69,7 @@ export default function LandingPage() {
                 </ul>
               </div>
               <div className="p-8 bg-blue-600/5">
-                <p className="text-xs font-bold text-blue-400 uppercase mb-6 tracking-widest">WebCircuit</p>
+                <p className="text-xs font-bold text-blue-400 uppercase mb-6 tracking-widest">WebCircuit UK</p>
                 <ul className="space-y-4">
                   <li className="flex items-start gap-2 text-blue-100 text-sm font-bold"><Check className="w-4 h-4 mt-1 flex-shrink-0 text-blue-400" /> Next.js 15 Speed</li>
                   <li className="flex items-start gap-2 text-blue-100 text-sm font-bold"><Check className="w-4 h-4 mt-1 flex-shrink-0 text-blue-400" /> Clevedon-Based Support</li>
@@ -84,7 +83,7 @@ export default function LandingPage() {
       </section>
 
       {/* 3. TECH STACK MARQUEE */}
-      <div className="py-10 border-y border-white/5 bg-white/[0.02]">
+      <div className="py-10 border-y border-white/5 bg-white/[0.02]" aria-label="Web Development Technology Stack">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-600 mb-8">Engineering Stack</p>
           <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-40 grayscale hover:grayscale-0 transition-all">
@@ -103,7 +102,7 @@ export default function LandingPage() {
             <div className="inline-flex items-center gap-2 text-blue-400 font-bold mb-6 uppercase tracking-widest text-xs">
               <DollarSign className="w-4 h-4" /> Capital Efficiency
             </div>
-            <h4 className="text-3xl md:text-4xl font-black mb-4 text-white tracking-tight uppercase">Flexible for your budget</h4>
+            <h3 className="text-3xl md:text-4xl font-black mb-4 text-white tracking-tight uppercase">Flexible for your budget</h3>
             <p className="text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
               Whether you have £500 or £50,000, we prioritize features based on your available capital. 
               Our goal is to build the highest value version of your vision that fits your wallet.
@@ -113,14 +112,14 @@ export default function LandingPage() {
       </section>
 
       {/* 5. BENTO GRID FEATURES */}
-      <section className="py-32 px-6 max-w-7xl mx-auto">
+      <section className="py-32 px-6 max-w-7xl mx-auto" aria-labelledby="web-performance-features">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="md:col-span-2 row-span-2 p-8 md:p-12 rounded-3xl bg-slate-900/40 border border-slate-800 flex flex-col justify-between group">
             <div className="space-y-4">
               <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
                 <Zap className="text-blue-400 w-6 h-6" />
               </div>
-              <h2 className="text-4xl font-bold tracking-tight">Vercel Edge Performance</h2>
+              <h2 id="web-performance-features" className="text-4xl font-bold tracking-tight">Vercel Edge Performance</h2>
               <p className="text-slate-400 text-lg max-w-md">
                 We optimize every millisecond. Our deployments leverage Edge Runtime to ensure sub-100ms load times globally.
               </p>
@@ -170,7 +169,7 @@ export default function LandingPage() {
       </section>
 
       {/* 7. PROCESS SECTION */}
-      <section className="py-32 px-6 bg-white/[0.01]">
+      <section className="py-32 px-6 bg-white/[0.01]" id="process">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 uppercase">The WebCircuit Process</h2>
@@ -198,7 +197,7 @@ export default function LandingPage() {
       </section>
 
       {/* NEW: SOUTH WEST SERVICE AREA ENGINE */}
-      <section className="py-24 px-6 border-y border-white/5 bg-blue-600/[0.02]">
+      <section className="py-24 px-6 border-y border-white/5 bg-blue-600/[0.02]" id="service-areas">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black tracking-[0.2em] uppercase mb-6">
@@ -212,7 +211,7 @@ export default function LandingPage() {
               Based in <strong>Clevedon</strong>, we provide elite web development and software engineering to the entire <strong>South West</strong>. We don't just build sites; we build local success stories.
             </p>
             <div className="flex flex-wrap gap-2">
-              {['North Somerset', 'Bristol', 'Portishead', 'Nailsea', 'Weston', 'Bath', 'Gloucester'].map((area) => (
+              {['North Somerset Web Development', 'Bristol SEO', 'Portishead Web Design', 'Nailsea Software Engineering', 'Weston Business Websites', 'Bath SaaS', 'Gloucester Apps'].map((area) => (
                 <span key={area} className="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-[10px] font-bold uppercase text-slate-400">
                   {area}
                 </span>
@@ -220,11 +219,11 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="p-8 rounded-3xl bg-slate-900/40 border border-slate-800">
+            <div className="p-8 rounded-3xl bg-slate-900/40 border border-slate-800 transition-colors hover:bg-slate-900/60">
               <h4 className="font-bold text-blue-400 mb-2 uppercase text-xs tracking-widest">Local Advantage</h4>
               <p className="text-sm text-slate-500">On-site meetings and direct physical support for businesses in the North Somerset region.</p>
             </div>
-            <div className="p-8 rounded-3xl bg-slate-900/40 border border-slate-800">
+            <div className="p-8 rounded-3xl bg-slate-900/40 border border-slate-800 transition-colors hover:bg-slate-900/60">
               <h4 className="font-bold text-purple-400 mb-2 uppercase text-xs tracking-widest">Regional Scale</h4>
               <p className="text-sm text-slate-500">Deploying world-class software that puts South West founders on the global map.</p>
             </div>
@@ -244,7 +243,7 @@ export default function LandingPage() {
           <p className="text-blue-100 mb-12 text-lg md:text-xl max-w-xl mx-auto relative z-10">
             Partner with the leading <span className="font-bold border-b border-blue-300">Clevedon web agency</span>. We're currently taking on new projects across the South West.
           </p>
-          <Link href="/contact" className="inline-flex items-center gap-3 bg-white text-blue-600 px-12 py-5 rounded-full font-black text-xl hover:scale-105 transition-all shadow-xl relative z-10">
+          <Link href="/contact" title="Start your project with WebCircuit UK" className="inline-flex items-center gap-3 bg-white text-blue-600 px-12 py-5 rounded-full font-black text-xl hover:scale-105 transition-all shadow-xl relative z-10">
             Get Started <ChevronRight className="w-6 h-6" />
           </Link>
         </div>

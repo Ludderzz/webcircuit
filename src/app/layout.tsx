@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/navbar";
@@ -14,12 +14,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Separate viewport export for Next.js 15 standards
+export const viewport: Viewport = {
+  themeColor: "#020203",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   title: {
     default: "WebCircuitUK | Web Design Clevedon | Software Engineering North Somerset",
     template: "%s | WebCircuitUK"
   },
-  description: "WebCircuitUK: Leading web design agency in Clevedon. Specializing in high-performance Next.js websites, custom software engineering, and SEO for businesses in North Somerset, Bristol, Portishead, and Nailsea.",
+  description: "WebCircuitUK: The South West's leading agency for high-performance Next.js websites, custom software engineering, and SEO. Serving Clevedon, Bristol, Portishead, and Nailsea businesses.",
   keywords: [
     "Web Design Clevedon",
     "Web Development North Somerset",
@@ -31,12 +38,14 @@ export const metadata: Metadata = {
     "Web Design Portishead",
     "Web Design Nailsea",
     "E-commerce Website Builder Somerset",
-    "Business Automation Software",
-    "Mobile Responsive Design Clevedon",
-    "React Developer North Somerset",
-    "Full Stack Engineering Bristol",
-    "Professional Web Agency Clevedon",
-    "Website Speed Optimization UK"
+    "Business Automation Software UK",
+    "Mobile Responsive Design North Somerset",
+    "React Developer Bristol",
+    "Full Stack Engineering Somerset",
+    "Website Speed Optimization South West",
+    "Web Design Weston-super-Mare",
+    "Custom CRM Development UK",
+    "App Developers South West England"
   ],
   authors: [{ name: "WebCircuitUK" }],
   creator: "WebCircuitUK",
@@ -48,14 +57,23 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_GB",
     url: "https://webcircuituk.com",
-    title: "WebCircuitUK | Elite Web Design & Software in North Somerset",
-    description: "Engineering ultra-fast digital products for founders in Clevedon and beyond. Specialized in Next.js, Supabase, and custom software solutions.",
+    title: "WebCircuitUK | Elite Web Design & Software Engineering",
+    description: "Engineering ultra-fast digital products for founders in Clevedon and the South West. Specialist Next.js & Supabase development.",
     siteName: "WebCircuitUK",
+    images: [
+      {
+        url: "/og-image.jpg", // Ensure this file exists in your public folder
+        width: 1200,
+        height: 630,
+        alt: "WebCircuitUK - High Performance Web Solutions",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "WebCircuitUK | Performance Web Engineering",
-    description: "High-end web design and software development based in Clevedon, North Somerset.",
+    description: "Custom software and premium web design based in Clevedon, North Somerset.",
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -78,42 +96,60 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        {/* Structured Data for Local Business & Service Area SEO */}
+        {/* Advanced Schema: Combining LocalBusiness with Service details */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              "name": "WebCircuitUK",
-              "url": "https://webcircuituk.com",
-              "logo": "https://webcircuituk.com/logo.png",
-              "image": "https://webcircuituk.com/og-image.jpg",
-              "description": "Premium Web Design and Custom Software Engineering in Clevedon and North Somerset.",
-              "telephone": "+447552384420",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Clevedon",
-                "addressRegion": "North Somerset",
-                "addressCountry": "GB"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": 51.4384,
-                "longitude": -2.8531
-              },
-              "areaServed": [
-                { "@type": "City", "name": "Clevedon" },
-                { "@type": "City", "name": "Bristol" },
-                { "@type": "City", "name": "Portishead" },
-                { "@type": "City", "name": "Nailsea" },
-                { "@type": "City", "name": "Weston-super-Mare" },
-                { "@type": "State", "name": "North Somerset" }
-              ],
-              "priceRange": "££",
-              "sameAs": [
-                "https://www.linkedin.com/company/webcircuituk",
-                "https://twitter.com/webcircuituk"
+              "@graph": [
+                {
+                  "@type": "ProfessionalService",
+                  "@id": "https://webcircuituk.com/#organization",
+                  "name": "WebCircuitUK",
+                  "url": "https://webcircuituk.com",
+                  "logo": "https://webcircuituk.com/logo.png",
+                  "image": "https://webcircuituk.com/og-image.jpg",
+                  "description": "Premium Web Design and Custom Software Engineering in Clevedon and North Somerset.",
+                  "telephone": "+447552384420",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Clevedon",
+                    "addressRegion": "North Somerset",
+                    "addressCountry": "GB"
+                  },
+                  "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 51.4384,
+                    "longitude": -2.8531
+                  },
+                  "areaServed": [
+                    { "@type": "City", "name": "Clevedon" },
+                    { "@type": "City", "name": "Bristol" },
+                    { "@type": "City", "name": "Portishead" },
+                    { "@type": "City", "name": "Nailsea" },
+                    { "@type": "City", "name": "Weston-super-Mare" },
+                    { "@type": "City", "name": "Bath" },
+                    { "@type": "State", "name": "North Somerset" },
+                    { "@type": "State", "name": "South West England" }
+                  ],
+                  "priceRange": "££"
+                },
+                {
+                  "@type": "Service",
+                  "serviceType": "Web Design and Development",
+                  "provider": { "@id": "https://webcircuituk.com/#organization" },
+                  "areaServed": { "@type": "State", "name": "South West England" },
+                  "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Web Development Services",
+                    "itemListElement": [
+                      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Next.js Development" } },
+                      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Local SEO Optimization" } },
+                      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SaaS Infrastructure Engineering" } }
+                    ]
+                  }
+                }
               ]
             })
           }}
