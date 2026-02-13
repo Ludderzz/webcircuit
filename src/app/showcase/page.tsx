@@ -53,7 +53,7 @@ export default async function ShowcasePage() {
             <span className="text-slate-500">CONCEPT.</span>
           </h1>
           <p className="text-base md:text-lg text-slate-400 leading-relaxed max-w-xl">
-            A curated selection of platforms, interfaces, and ecosystems we've engineered from the ground up.
+            A curated selection of platforms, interfaces, and ecosystems we've engineered from the ground up. All projects are custom coded and this page is being updated as my projects get going though a admin panel
           </p>
         </header>
 
