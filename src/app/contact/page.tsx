@@ -81,7 +81,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Email Interface</p>
-                    <p className="font-black text-xl text-slate-200">hello@webcircuituk.com</p>
+                    <p className="font-black text-xl text-slate-200">info@webcircuituk.com</p>
                   </div>
                 </div>
               </div>
