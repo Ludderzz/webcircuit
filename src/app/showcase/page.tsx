@@ -1,6 +1,11 @@
 import { createClient } from '@supabase/supabase-js'
 import { ExternalLink, Layout } from 'lucide-react'
 
+// FORCE DYNAMIC DATA: This tells Next.js to bypass the cache 
+// and fetch fresh projects from Supabase on every visit.
+export const revalidate = 0;
+export const dynamic = 'force-dynamic';
+
 // Initialize the client
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -22,7 +27,6 @@ export default async function ShowcasePage() {
   if (projects) {
     projects = projects.filter(project => {
       const desc = project.details?.toLowerCase() || "";
-      // If the description contains any of these words, hide it
       const isRecurring = desc.includes('hosting') || 
                           desc.includes('maintenance') || 
                           desc.includes('recurring');
