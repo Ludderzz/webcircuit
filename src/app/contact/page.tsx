@@ -20,7 +20,7 @@ export default function Contact() {
     const message = formData.get('message');
     const charityNumber = formData.get('charityNumber');
 
-    const myNumber = "447552384420";
+    const myNumber = "447763120818";
 
     const charityInfo = isCharity ? `%0A*Charity Registered:* Yes%0A*Reg Number:* ${charityNumber}` : '';
 
