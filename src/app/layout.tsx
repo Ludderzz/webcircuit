@@ -14,19 +14,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Separate viewport export for Next.js 15 standards
 export const viewport: Viewport = {
   themeColor: "#020203",
   width: "device-width",
   initialScale: 1,
+  colorScheme: 'dark',
 };
 
 export const metadata: Metadata = {
   title: {
-    default: "WebCircuitUK | Web Design Clevedon | Software Engineering North Somerset",
+    default: "WebCircuitUK | Web Design Clevedon | Software Engineering Bristol",
     template: "%s | WebCircuitUK"
   },
-  description: "WebCircuitUK: The South West's leading agency for high-performance Next.js websites, custom software engineering, and SEO. Serving Clevedon, Bristol, Portishead, and Nailsea businesses.",
+  description: "WebCircuitUK: Clevedon's premier agency for high-performance Next.js websites, custom SaaS engineering, and Local SEO. Rank higher in North Somerset & Bristol.",
   keywords: [
     "Web Design Clevedon",
     "Web Development North Somerset",
@@ -45,7 +45,8 @@ export const metadata: Metadata = {
     "Website Speed Optimization South West",
     "Web Design Weston-super-Mare",
     "Custom CRM Development UK",
-    "App Developers South West England"
+    "App Developers South West England",
+    "Vercel Deployment Specialist UK"
   ],
   authors: [{ name: "WebCircuitUK" }],
   creator: "WebCircuitUK",
@@ -62,10 +63,10 @@ export const metadata: Metadata = {
     siteName: "WebCircuitUK",
     images: [
       {
-        url: "/og-image.jpg", // Ensure this file exists in your public folder
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "WebCircuitUK - High Performance Web Solutions",
+        alt: "WebCircuitUK - High Performance Web Solutions Clevedon",
       },
     ],
   },
@@ -94,9 +95,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-        {/* Advanced Schema: Combining LocalBusiness with Service details */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -116,6 +116,7 @@ export default function RootLayout({
                     "@type": "PostalAddress",
                     "addressLocality": "Clevedon",
                     "addressRegion": "North Somerset",
+                    "postalCode": "BS21",
                     "addressCountry": "GB"
                   },
                   "geo": {
@@ -133,7 +134,19 @@ export default function RootLayout({
                     { "@type": "State", "name": "North Somerset" },
                     { "@type": "State", "name": "South West England" }
                   ],
-                  "priceRange": "££"
+                  "priceRange": "££",
+                  "openingHoursSpecification": {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": [
+                      "Monday",
+                      "Tuesday",
+                      "Wednesday",
+                      "Thursday",
+                      "Friday"
+                    ],
+                    "opens": "09:00",
+                    "closes": "17:00"
+                  }
                 },
                 {
                   "@type": "Service",
@@ -157,9 +170,10 @@ export default function RootLayout({
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#020203] text-slate-50 min-h-screen flex flex-col`}
+        suppressHydrationWarning
       >
         <Navbar />
-        <main className="flex-grow">
+        <main className="flex-grow pt-20 md:pt-0">
           {children}
         </main>
         <Footer />
