@@ -38,26 +38,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* CORE SERVICES (SEO DRIVERS) */}
-        <div>
-          <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white mb-10 border-b border-blue-600 pb-4 inline-block">
-            Core Services
-          </h4>
-          <ul className="space-y-4 text-slate-500 text-sm font-black italic uppercase">
-            <li className="hover:text-blue-500 transition-colors flex items-center gap-2 group cursor-pointer">
-              Next.js Development <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </li>
-            <li className="hover:text-blue-500 transition-colors flex items-center gap-2 group cursor-pointer">
-              SaaS Engineering <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </li>
-            <li className="hover:text-blue-500 transition-colors flex items-center gap-2 group cursor-pointer">
-              SEO Strategy Clevedon <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </li>
-            <li className="hover:text-blue-500 transition-colors flex items-center gap-2 group cursor-pointer">
-              Database Design <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </li>
-          </ul>
-        </div>
 
         {/* THE STUDIO (LOCAL SIGNALS) */}
         <div>
