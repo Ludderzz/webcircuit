@@ -13,17 +13,6 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 )
 
-// Helper function to resolve image URL reliably
-function getValidImageUrl(screenshotUrl: string | null, websiteUrl: string | null) {
-  if (screenshotUrl && screenshotUrl.startsWith('http')) {
-    return screenshotUrl;
-  }
-  if (websiteUrl) {
-    return `https://api.microlink.io/?url=${encodeURIComponent(websiteUrl)}&screenshot=true&meta=false&embed=screenshot.url`;
-  }
-  return '';
-}
-
 export default async function ShowcasePage() {
   let { data: projects, error } = await supabase
     .from('jobs')
@@ -135,7 +124,8 @@ export default async function ShowcasePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-20">
               {projects && projects.length > 0 ? (
                 projects.map((project, idx) => {
-                  const imgSrc = getValidImageUrl(project.screenshot_url, project.website_url);
+                  // Fallback to dynamic Microlink URL if screenshot_url is empty in the database
+                  const imgSrc = project.screenshot_url || `https://api.microlink.io/?url=${encodeURIComponent(project.website_url)}&screenshot=true&meta=false&embed=screenshot.url`;
 
                   return (
                     <div key={project.business_name} className="group relative">
@@ -143,21 +133,13 @@ export default async function ShowcasePage() {
                         0{idx + 1}
                       </div>
                       <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] border border-white/5 bg-slate-900 transition-all duration-700 group-hover:border-blue-500/40 group-hover:shadow-[0_0_80px_-20px_rgba(59,130,246,0.2)] flex items-center justify-center">
-                        {imgSrc ? (
-                          <img 
-                            src={imgSrc} 
-                            alt={project.business_name}
-                            loading="eager"
-                            decoding="async"
-                            className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"
-                          />
-                        ) : (
-                          <div className="flex flex-col items-center justify-center gap-2 text-slate-600 font-mono text-xs">
-                            <Globe className="w-8 h-8 stroke-[1.5]" />
-                            <span>NO PREVIEW AVAILABLE</span>
-                          </div>
-                        )}
-
+                        <img 
+                          src={imgSrc} 
+                          alt={project.business_name}
+                          loading="eager"
+                          decoding="async"
+                          className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"
+                        />
                         <div className="absolute inset-0 bg-[#020203]/90 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center gap-6 px-8 text-center">
                            <a href={project.website_url} target="_blank" rel="noreferrer" className="flex items-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-2xl font-black transition-all hover:bg-blue-500">
                             LAUNCH ASSET <ExternalLink className="w-5 h-5" />
