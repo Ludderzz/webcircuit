@@ -124,8 +124,14 @@ export default async function ShowcasePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-20">
               {projects && projects.length > 0 ? (
                 projects.map((project, idx) => {
-                  // Fallback to dynamic Microlink URL if screenshot_url is empty in the database
-                  const imgSrc = project.screenshot_url || `https://api.microlink.io/?url=${encodeURIComponent(project.website_url)}&screenshot=true&meta=false&embed=screenshot.url`;
+                  // Fallback to Thum.io free tier if database screenshot_url is missing, empty, or a broken microlink URL
+                  const isValidStoredUrl = project.screenshot_url && 
+                    project.screenshot_url.startsWith('http') && 
+                    !project.screenshot_url.includes('microlink.io'); // avoids old rate-limited URLs
+
+                  const imgSrc = isValidStoredUrl 
+                    ? project.screenshot_url 
+                    : `https://image.thum.io/get/width/1200/crop/800/${project.website_url}`;
 
                   return (
                     <div key={project.business_name} className="group relative">
@@ -141,15 +147,15 @@ export default async function ShowcasePage() {
                           className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-[#020203]/90 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center gap-6 px-8 text-center">
-                           <a href={project.website_url} target="_blank" rel="noreferrer" className="flex items-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-2xl font-black transition-all hover:bg-blue-500">
+                          <a href={project.website_url} target="_blank" rel="noreferrer" className="flex items-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-2xl font-black transition-all hover:bg-blue-500">
                             LAUNCH ASSET <ExternalLink className="w-5 h-5" />
                           </a>
                         </div>
                       </div>
 
                       <div className="mt-8 flex justify-between items-start">
-                         <h3 className="text-3xl font-black tracking-tighter uppercase italic">{project.business_name}</h3>
-                         <div className="w-12 h-12 rounded-full border border-white/5 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+                        <h3 className="text-3xl font-black tracking-tighter uppercase italic">{project.business_name}</h3>
+                        <div className="w-12 h-12 rounded-full border border-white/5 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
                           <ArrowUpRight className="w-6 h-6" />
                         </div>
                       </div>
@@ -159,21 +165,21 @@ export default async function ShowcasePage() {
               ) : null}
             </div>
 
-            {/* MOBILE SIDEBAR VERSION */}
-            <div className="mt-24 lg:hidden w-full">
-               <SidebarContent />
-            </div>
+          {/* MOBILE SIDEBAR VERSION */}
+          <div className="mt-24 lg:hidden w-full">
+            <SidebarContent />
           </div>
-
-          {/* DESKTOP SIDEBAR VERSION */}
-          <aside className="lg:w-96 hidden lg:block self-stretch">
-            <div className="sticky top-32">
-              <SidebarContent />
-            </div>
-          </aside>
-
         </div>
-      </main>
-    </div>
+
+        {/* DESKTOP SIDEBAR VERSION */}
+        <aside className="lg:w-96 hidden lg:block self-stretch">
+          <div className="sticky top-32">
+            <SidebarContent />
+          </div>
+        </aside>
+
+      </div>
+    </main>
+  </div>
   )
 }
