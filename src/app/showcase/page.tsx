@@ -133,6 +133,8 @@ export default async function ShowcasePage() {
                       <img 
                         src={project.screenshot_url} 
                         alt={project.business_name}
+                        loading="eager"
+                        decoding="async"
                         className="w-full h-full object-cover object-top pt-8 transition-transform duration-1000 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-[#020203]/90 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center gap-6 px-8 text-center">
@@ -152,13 +154,13 @@ export default async function ShowcasePage() {
               ) : null}
             </div>
 
-            {/* MOBILE SIDEBAR VERSION: Appears after the grid on small/medium screens only */}
+            {/* MOBILE SIDEBAR VERSION */}
             <div className="mt-24 lg:hidden w-full">
                <SidebarContent />
             </div>
           </div>
 
-          {/* DESKTOP SIDEBAR VERSION: Sticky on the right for large screens only */}
+          {/* DESKTOP SIDEBAR VERSION */}
           <aside className="lg:w-96 hidden lg:block self-stretch">
             <div className="sticky top-32">
               <SidebarContent />
